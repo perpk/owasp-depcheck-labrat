@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'org.owasp.dependencycheck' version '6.0.5'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencyCheck {
+    formats = ["HTML", "JSON"]
+}
+
+dependencies {
+    runtime group: 'org.springframework', name: 'spring-core', version: '2.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
