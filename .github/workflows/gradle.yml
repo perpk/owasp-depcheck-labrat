@@ -42,8 +42,12 @@ jobs:
         with:
           repository: perpk/owasp-report-custom-render
           path: action.yml
+      - name: Check where we are
+        run: pwd
+      - name: Check what the dir contents are
+        run: ls -lah
       - name: Run Report Creation
-        uses: ./owasp-report-custom-render
+        uses: ./
         with:
           owasp-json-report: ./dependency-check-report.json
 
