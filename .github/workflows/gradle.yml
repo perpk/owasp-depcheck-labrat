@@ -10,8 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  depCheck:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,4 +22,16 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew dependencyCheckAnalyze
+
+  owasp_report:
+    needs: [depCheck]
+    runs-on: ubuntu-20.04
+    name: Create a report with an overview of the vulnerabilities per dependency
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: perpk/owasp-report-custom-render
+          path: action.yml
+      - name: Run Report Creation
+        uses: ./action.yml
