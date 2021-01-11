@@ -43,7 +43,7 @@ jobs:
           repository: perpk/owasp-report-custom-render
           path: action.yml
       - name: Run Report Creation
-        uses: ./action.yml
+        uses: ./owasp-report-custom-render
         with:
           owasp-json-report: ./dependency-check-report.json
 
