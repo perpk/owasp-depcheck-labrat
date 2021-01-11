@@ -23,15 +23,27 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew dependencyCheckAnalyze
+    - name: Backup JSON Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: dependency-check-report.json
+        path: ./build/reports
 
   owasp_report:
     needs: [depCheck]
     runs-on: ubuntu-20.04
     name: Create a report with an overview of the vulnerabilities per dependency
     steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: dependency-check-report.json
+          path: ./
       - uses: actions/checkout@v2
         with:
           repository: perpk/owasp-report-custom-render
           path: action.yml
       - name: Run Report Creation
         uses: ./action.yml
+        with:
+          owasp-json-report: ./dependency-check-report.json
+
