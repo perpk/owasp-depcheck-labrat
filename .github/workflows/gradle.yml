@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: dependency-check-report.json
-        path: ./build/reports
+        path: ./build/reports/dependency-check-report.json
 
   owasp_report:
     needs: [depCheck]
