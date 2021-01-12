@@ -41,10 +41,8 @@ jobs:
         with:
           name: dependency-check-report.json
           path: ./
-      - name: Check where we are
-        run: pwd
-      - name: Check what the dir contents are
-        run: ls -lah
+      - name: Perform npm install on checked-out action
+        run: npm install
       - name: Run Report Creation
         uses: ./
         with:
