@@ -44,7 +44,13 @@ jobs:
       - name: Perform npm install on checked-out action
         run: npm install
       - name: Run Report Creation
+        id: report_create
         uses: ./
         with:
           owasp-json-report: dependency-check-report.json
+      - name: Upload overview report
+        uses: actions/upload-artifact@v2
+        with:
+          path: ${{steps.report_create.outputs.pdf}}
+
 
