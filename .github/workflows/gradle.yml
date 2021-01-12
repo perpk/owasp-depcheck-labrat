@@ -34,17 +34,19 @@ jobs:
     runs-on: ubuntu-20.04
     name: Create a report with an overview of the vulnerabilities per dependency
     steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: perpk/owasp-report-custom-render
       - uses: actions/download-artifact@v2
         with:
           name: dependency-check-report.json
           path: ./
-      - uses: actions/checkout@v2
-        with:
-          repository: perpk/owasp-report-custom-render
       - name: Check where we are
         run: pwd
       - name: Check what the dir contents are
         run: ls -lah
+      - name: Change perms on downloaded report file
+        run: chmod u+rwx dependency-check-report.json
       - name: Run Report Creation
         uses: ./
         with:
