@@ -50,7 +50,7 @@ jobs:
           chmod +rwx dependency-check-report.json
           chmod +rwx action.yml
       - name: Run Report Creation
-        uses: ./
+        uses: ./.
         with:
           owasp-json-report: ./dependency-check-report.json
 
