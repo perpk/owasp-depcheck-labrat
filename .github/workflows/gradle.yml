@@ -50,5 +50,5 @@ jobs:
       - name: Run Report Creation
         uses: ./
         with:
-          owasp-json-report: ./dependency-check-report.json
+          owasp-json-report: ./dependencyq-check-report.json
 
