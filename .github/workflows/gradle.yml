@@ -51,6 +51,7 @@ jobs:
       - name: Upload overview report
         uses: actions/upload-artifact@v2
         with:
-          path: ${{steps.report_create.outputs.pdf}}
+          name: Owasp Overview Report
+          path: owasp-report-overview.pdf
 
 
