@@ -48,7 +48,7 @@ jobs:
       - name: Change perms on downloaded report file
         run: chmod u+rwx dependency-check-report.json
       - name: Run Report Creation
-        uses: ./
+        uses: ./action.yml
         with:
-          owasp-json-report: ./dependencyq-check-report.json
+          owasp-json-report: ./dependency-check-report.json
 
