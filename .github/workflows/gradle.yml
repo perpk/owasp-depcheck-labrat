@@ -45,12 +45,8 @@ jobs:
         run: pwd
       - name: Check what the dir contents are
         run: ls -lah
-      - name: Change perms on downloaded report file
-        run: |
-          chmod +rwx dependency-check-report.json
-          chmod +rwx action.yml
       - name: Run Report Creation
-        uses: ./.
+        uses: ./
         with:
           owasp-json-report: ./dependency-check-report.json
 
