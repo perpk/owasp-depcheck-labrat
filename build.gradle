@@ -12,6 +12,7 @@ repositories {
 
 dependencyCheck {
     format = "JSON"
+    failBuildOnCVSS = 7
 }
 
 dependencies {
